@@ -25,18 +25,22 @@ A Django-based web application with modern features and robust architecture.
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/HaseebAhmed-2624/code_graphers.git 
 cd code_graphers
 ```
 
-2. Create a `.env` file within envs folder in the root directory with necessary environment variables in the parent directory)
+2. Copy .env.docker file to .env
 
-3. Start the application using Docker:
+3. Activate virtual environment and install dependencies
+
+4. Start the application using Docker:
+
 ```bash
 ./start.sh
 ```
 
 This will:
+
 - Build and start all necessary containers
 - Run database migrations
 - Collect static files
@@ -68,7 +72,10 @@ python manage.py runserver
 
 ## Docker Compose Setup
 
-1. Start docker compose containers:
+1. copy .env.docker to .env
+
+2. Start docker compose containers:
+
 ```bash
 bash start.sh
 ```
@@ -109,3 +116,10 @@ Once the application is running, you can access the API documentation at:
 ## Support
 
 For support, please [add your contact information or support channels here]
+
+## Note
+
+1. Pushed the .env file to github for ease in testing
+2. Didn't write unit tests due to short time
+
+
