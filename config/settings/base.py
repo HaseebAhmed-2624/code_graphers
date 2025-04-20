@@ -273,8 +273,6 @@ USE_PROD_DATABASE = env.bool('USE_PROD_DATABASE', False)
 DEV_MODE = env.bool('DEV_MODE', False)
 # ________DATABASE__________
 if env.str("DJANGO_SETTINGS_MODULE") == 'config.settings.production':
-    # CELERY_BROKER_URL = "redis://redis:6379"
-
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -292,14 +290,14 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-CELERY_BROKER_URL = "redis://localhost:6379/0"
 
-print(CELERY_BROKER_URL)
+CELERY_BROKER_URL = env.str("CELERY_BROKER_URL")
+
 # ________REDIS_CONFIGURATION________
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://localhost:6379/1",
+        "LOCATION": CELERY_BROKER_URL,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
